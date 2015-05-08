@@ -1,14 +1,15 @@
 class Client
-attr_reader(:name, :id)
+attr_reader(:name, :id, :stylist_id)
 
 
 define_method(:initialize) do |attributes|
   @name = attributes.fetch(:name)
   @id = attributes.fetch(:id).to_i()
+  @stylist_id = attributes.fetch(:stylist_id).to_i
 end
 
 define_method(:save) do
-  result = DB.exec("INSERT INTO clients (name) VALUES (#{@name}) RETURNING id")
+  result = DB.exec("INSERT INTO clients (name, stylist_id) VALUES ('#{@name}', '#{@stylist_id}') RETURNING id")
   @id = result.first().fetch("id").to_i()
 end
 
@@ -18,7 +19,8 @@ define_singleton_method(:all) do
   all_clients.each() do |client|
     name = client.fetch('name')
     id_number = client.fetch("id").to_i
-    result.push(Client.new({:name => name, :id => id_number}))
+    stylist_id = client.fetch("stylist_id").to_i
+    result.push(Client.new({:name => name, :id => id_number, :stylist_id => nil}))
   end
   result
 end
@@ -36,5 +38,7 @@ end
 define_method(:==) do |other_client|
   self.name() == other_client.name() && self.id() == other_client.id()
 end
+
+
 
 end
