@@ -1,5 +1,7 @@
 <h1>Edit details for client <%= @client.name() %></h1>
 
+<h2>Assigned Stylist: <%= Stylist.find(@client.stylist_id).name %></h2>
+
 </h2>Update the name of the client below</h2>
 
 <form action="/client/<%= @client.id() %>" method="post">
