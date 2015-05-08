@@ -42,21 +42,12 @@ end
   describe('#clients') do
     it('will return a list of clients for a particular stylist') do
       test_stylist = Stylist.new({:name => "Bob", :id => nil})
-<<<<<<< HEAD
       test_stylist.save()
       test_client = Client.new({:name => "Bill", :id => nil, :stylist_id => test_stylist.id()})
       test_client.save()
       test_client2 = Client.new({:name => "Brad", :id => nil, :stylist_id => test_stylist.id()})
       test_client2.save()
       expect(test_stylist.clients).to(eq([test_client, test_client2]))
-=======
-      test_list.save()
-      test_client = Client.new(:name => "Bill", :id => nil, :stylist_id => test_stylist.id()})
-      test_client.save()
-      test_client2 = Client.new(:name => "Brad", :id => nil, :stylist_id => test_stylist.id()})
-      test_client2.save()
-      expect(test_stylist.clients).to(eq([test_client, tesk_client2]))
->>>>>>> 6e9c5fbdde099936478e8dfecaf4416908e6e215
     end
   end
 

@@ -41,20 +41,12 @@ end
 
 define_method(:update) do |attributes|
   @name = attributes.fetch(:name)
-<<<<<<< HEAD
   @id = self.id()
-=======
-  @stylist_id = attributes.fetch(:stylist_id).to_i
-  @id = attributes.fetch(:id).to_i
->>>>>>> 6e9c5fbdde099936478e8dfecaf4416908e6e215
   DB.exec("UPDATE clients SET name = '#{@name}' WHERE id = #{@id};")
 end
 
 define_method(:delete) do
   DB.exec("DELETE FROM clients WHERE id = #{self.id()};")
 end
-<<<<<<< HEAD
 
 end
-=======
->>>>>>> 6e9c5fbdde099936478e8dfecaf4416908e6e215
