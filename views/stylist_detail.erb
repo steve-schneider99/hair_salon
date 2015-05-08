@@ -1,0 +1,41 @@
+<h1>Details for stylist <%= @stylist.name() %></h1>
+
+<h2>The following are clients of <%= @stylist.name() %>:</h2>
+
+<ul>
+  <% @clients.each do |client| %>
+  <li><%= client.name() %></li>
+  <% end %>
+</ul>
+
+<h3> Add a new client to this stylist below:</h3>
+
+<form action="/client/new" method="post">
+  <input id="stylist_id" name="stylist_id" type="hidden" value="<%= @stylist.id %>">
+
+  <label for="client">Client Name</label>
+  <input id="client" name="client" type="text">
+
+  <button type="submit">Add Client</button>
+</form>
+
+
+</h2>Stylist Maintenance</h2>
+
+<form action="/stylist/<%= @stylist.id() %>" method="post">
+  <input name="_method" type="hidden" value="patch">
+
+  <label for "name">Rename your stylist</label>
+  <input id="name" name="name" type="text">
+
+  <button type="submit">Update Stylist</button>
+</form>
+
+<form action="/stylist/<%= @stylist.id() %>" method="post">
+  <input name="_method" type="hidden" value="delete">
+
+  <button type="submit">Delete this stylist</button>
+</form>
+
+
+<a href="/client_list">Go back to the list of stylists</a>
