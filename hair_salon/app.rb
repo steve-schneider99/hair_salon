@@ -84,3 +84,14 @@ post("/stylist/new_client") do
   @clients = @stylist.clients()
   erb(:stylist_detail)
 end
+
+# post("/stylist/update_client") do
+#   @name = params.fetch("client")
+#   stylist_id = params.fetch("stylist_id")
+#   @target_client = DB.exec("SELECT * FROM clients WHERE name = '#{@name}'")
+#   @target_client.update_stylist()
+#   @stylist = Stylist.find(params.fetch("id").to_i)
+#   @clients = @stylist.clients()
+#   erb(:stylist_detail)
+#
+# end

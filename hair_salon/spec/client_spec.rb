@@ -66,4 +66,12 @@ end
     end
   end
 
+  describe('#update_stylist') do
+    it('lets you update the stylist of a client') do
+      test_client = Client.new({:name => "John", :stylist_id => nil, :id => nil})
+      test_client.save()
+      test_client.update_stylist({:stylist_id => 5})
+      expect(test_client.stylist_id()).to(eq(5))
+    end
+  end
 end
