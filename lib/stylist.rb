@@ -48,6 +48,5 @@ define_method(:clients) do
      end
      list_clients
    end
- end
 
 end
