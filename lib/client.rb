@@ -39,6 +39,13 @@ define_method(:==) do |other_client|
   self.name() == other_client.name() && self.id() == other_client.id()
 end
 
+define_method(:update) do |attributes|
+  @name = attributes.fetch(:name)
+  @stylist_id = attributes.fetch(:stylist_id).to_i
+  @id = attributes.fetch(:id).to_i
+  DB.exec("UPDATE clients SET name = '#{@name}' WHERE id = #{@id};")
+end
 
-
+define_method(:delete) do
+  DB.exec("DELETE FROM clients WHERE id = #{self.id()};")
 end

@@ -46,3 +46,15 @@ post("/new_stylist") do
   @stylists = []
   erb(:stylist_list)
 end
+
+get("/stylist/:id") do
+  @stylist = Stylist.find(params.fetch("id").to_i)
+  erb(:stylist_detail)
+end
+
+patch("stylist/:id") do
+  name = params.fetch("name")
+  @stylist = Stylist.find(params.fetch("id").to_i)
+  @stylist.update({:name => name})
+  erb(:stylist_detail)
+end
